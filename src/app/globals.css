@@ -1,26 +1,193 @@
+@import url('https://db.onlinewebfonts.com/c/d8436a566897114f1cb5d935780cf174?family=Granjon+LT+W01+Roman');
+@import url('https://db.onlinewebfonts.com/c/f4829115b4b155e1f9d5364dfc1c5300?family=Adobe+Garamond+W01+Bd');
 @import "tailwindcss";
 
+/*@import url('https://db.onlinewebfonts.com/c/f4829115b4b155e1f9d5364dfc1c5300?family=Adobe+Garamond+W01+Bd');*/
 :root {
-  --background: #ffffff;
+  --background: #f4ebe1;
   --foreground: #171717;
+  --gray: #9b9b9b;
+  --footer: #484848;
+  --link: #b94820;
+  --text: #393333;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-link: var(--link);
+  --color-gray: var(--gray);
+  --color-footer: var(--footer);
+  --colot-text: var(--text);
+  --font-sans: var(--font-sans);
+  --font-serif: 'Granjon LT W01 Roman', serif;
+  --font-mono: 'Adobe Garamond', serif;
+
 }
 
-@media (prefers-color-scheme: dark) {
+/*@media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+}*/
+
+html, body {
+  background: var(--background);
+  font-family: var(--font-sans), serif;
+  min-height: 100vh;
+  min-width: 100vw;
+  transition-property: background, opacity, transform, filter;
+  transition-timing-function: ease-in-out;
+  transition-duration: 500ms;
+  position: relative;
+  width: 100%;
+
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Overlay */
+#page-transition-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--color-background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: var(--color-footer);
+  z-index: 9999;
+  padding: 30px;
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(40px);
+  filter: blur(12px);
+
+  transition: all 500ms ease-in-out;
+}
+
+#page-transition-overlay.active {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+#page-transition-overlay::after {
+  content: "Valerii Lindstrem\A cake art";
+  white-space: pre;
+  text-align: center;
+}
+
+.arrow {
+  width: 20px;
+  height: 1px;
+  background-color: var(--color-gray);
+  animation: navigate_animation 4s cubic-bezier(0.45, 0.05, 0, 1) infinite;
+  animation-fill-mode: both;
+
+  &:nth-of-type(1) {
+    animation-delay: 0.4s;
+  }
+
+  &:nth-of-type(2) {
+    animation-delay: 0.5s;
+  }
+
+  &:nth-of-type(3) {
+    animation-delay: 0.6s;
+  }
+}
+
+.arrow-close {
+  &:first-of-type {
+    background-color: var(--color-gray);
+    width: 1px;
+    height: 30px;
+    transform: rotate(330deg);
+    animation: navigate_close_1 4s cubic-bezier(0.45, 0.05, 0, 1) infinite;
+  }
+
+  &:last-of-type {
+    background-color: var(--color-gray);
+    width: 1px;
+    height: 30px;
+    transform: rotate(28deg);
+    animation: navigate_close_2 4s cubic-bezier(0.45, 0.05, 0, 1) infinite;
+  }
+
+  &:nth-of-type(2) {
+    display: none;
+  }
+}
+
+@keyframes navigate_animation {
+  0% {
+    background-color: var(--color-gray);
+    width: 30px;
+  }
+  10% {
+    width: 30px;
+    background-color: var(--color-footer);
+  }
+  30% {
+    width: 0;
+    background-color: var(--color-footer);
+  }
+  31% {
+    background-color: var(--color-footer);
+  }
+  50% {
+    width: 30px;
+    background-color: var(--color-footer);
+  }
+  100% {
+    width: 30px;
+    background-color: var(--color-gray);
+  }
+}
+
+
+@keyframes navigate_close_1 {
+  0% {
+
+    transform: rotate(0deg);
+    background-color: gray;
+  }
+  50% {
+
+    transform: rotate(-28deg);
+    background-color: black;
+  }
+  100% {
+
+    transform: rotate(0deg);
+    background-color: gray;
+  }
+}
+
+
+@keyframes navigate_close_2 {
+  0% {
+
+    transform: rotate(0deg);
+    background-color: gray;
+  }
+  50% {
+
+    transform: rotate(28deg);
+    background-color: black;
+  }
+  100% {
+
+    transform: rotate(0deg);
+    background-color: gray;
+  }
+}
+
+.close-button {
+  svg {
+    path {
+      stroke-width: 10;
+    }
+  }
 }
