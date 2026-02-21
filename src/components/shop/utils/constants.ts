@@ -1,4 +1,4 @@
-import { ShopCategory } from '@/app/shop/utils/types'
+import { ShopCategory } from '@/components/shop/utils/types'
 
 export const CATEGORIES = [
   {label: 'All', value: null},

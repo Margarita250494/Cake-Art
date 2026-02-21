@@ -1,5 +1,5 @@
 'use client'
-import { TShopCard } from '@/app/shop/utils/types'
+import { TShopCard } from '@/components/shop/utils/types'
 import clsx from 'clsx'
 import Image from 'next/image'
 

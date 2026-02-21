@@ -1,6 +1,6 @@
-import ButtonCard from '@/app/shop/ButtonCard'
-import { CATEGORIES } from '@/app/shop/utils/constants'
-import { ShopCategory } from '@/app/shop/utils/types'
+import ButtonCard from '@/components/shop/ButtonCard'
+import { CATEGORIES } from '@/components/shop/utils/constants'
+import { ShopCategory } from '@/components/shop/utils/types'
 import clsx from 'clsx'
 
 

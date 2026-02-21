@@ -1,6 +1,6 @@
-import { BUTTON_POSITIONS, CATEGORIES } from '@/app/shop/utils/constants'
-import { dataShop } from '@/app/shop/utils/data'
-import { ShopCategory } from '@/app/shop/utils/types'
+import { BUTTON_POSITIONS, CATEGORIES } from '@/components/shop/utils/constants'
+import { dataShop } from '@/components/shop/utils/data'
+import { ShopCategory } from '@/components/shop/utils/types'
 import { useMemo, useState } from 'react'
 
 export const useFilteredCards = () => {

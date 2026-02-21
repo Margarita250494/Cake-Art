@@ -1,4 +1,4 @@
-import { TButtonCard } from '@/app/shop/utils/types'
+import { TButtonCard } from '@/components/shop/utils/types'
 import clsx from 'clsx'
 
 const ButtonCard = ({label, active, onClick}: TButtonCard) => {

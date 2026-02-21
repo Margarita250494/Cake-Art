@@ -1,5 +1,5 @@
-import { services } from '@/app/services/utils/services.data'
-import HowToOrder from '@/app/shop/HowToOrder'
+import { services } from '@/components/services/utils/services.data'
+import HowToOrder from '@/components/shop/HowToOrder'
 import Image from 'next/image'
 
 
