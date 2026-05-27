@@ -4,11 +4,12 @@ import HowToOrder from '@/components/shop/HowToOrder'
 import ShopCard from '@/components/shop/ShopCard'
 import { useFilteredCards } from '@/hooks/useFilteredCards'
 import { useSwitchingAnimation } from '@/hooks/useSwitchingAnimation'
+import { Shop } from '@/utils/types'
 import clsx from 'clsx'
 import { useState } from 'react'
 
-const ShopPage = () => {
-  const {active, setActive, items} = useFilteredCards()
+const ShopPage = ({products}: Shop) => {
+  const {active, setActive, items} = useFilteredCards(products)
   const {visible, animate} = useSwitchingAnimation()
 
   const [openCardId, setOpenCardId] = useState<string | null>(null)
@@ -63,13 +64,13 @@ const ShopPage = () => {
           <li
             key={data.id}
             className={clsx(
-              'relative overflow-hidden m-0',
+              'relative overflow-hidden m-0 @container',
               index % 2 === 0 ? 'row-span-3 sm:row-span-1' : 'row-span-3 sm:row-span-2'
             )}
           >
             <ShopCard
               description={data.description}
-              image={data.image}
+              image={data.imageUrl}
               title={data.title}
               isOpen={openCardId === data.id}
               onClick={() => handleCardClick(data.id)}

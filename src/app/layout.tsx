@@ -26,6 +26,7 @@ export default function RootLayout({
     <html lang="en">
     <body
       className={`${cormorantSans.variable} antialiased flex flex-col min-h-screen`}
+      suppressHydrationWarning
     >
     <div
       id="page-transition-overlay"

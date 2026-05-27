@@ -6,7 +6,7 @@ const AboutPage = () => {
     <main className="px-6 pt-1.5 pb-6 w-full flex-1 flex flex-col gap-6 sm:gap-10 justify-center items-center">
       <div className="w-full h-full flex flex-col gap-6 sm:gap-10 justify-center items-center">
         <Image
-          src="/about.png"
+          src="https://res.cloudinary.com/dc9fmzb2e/image/upload/v1779813454/about_qergus.png"
           alt=""
           width={400}
           height={400}

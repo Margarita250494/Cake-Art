@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <main className="w-full h-full flex justify-center items-center ">
       <Image
-        src="/background.jpg"
+        src="https://res.cloudinary.com/dc9fmzb2e/image/upload/v1779813464/background_r4fz6w.jpg"
         alt=""
         width={700}
         height={700}

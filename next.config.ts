@@ -6,7 +6,9 @@ const withBundleAnalyzer = bundleAnalyzer({
 });
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    domains: ["res.cloudinary.com"]
+  }
 };
 
 export default withBundleAnalyzer(nextConfig);

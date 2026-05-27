@@ -6,28 +6,28 @@ export const mainNavigationLinks: NavigationType[] = [
     link: 'Home',
     href: '/',
     description: 'Click to start at the beginning',
-    image: '/background.jpg'
+    image: 'https://res.cloudinary.com/dc9fmzb2e/image/upload/v1779813464/background_r4fz6w.jpg'
   },
   {
     id: 'about',
     link: 'About',
     href: '/about',
     description: 'Learn about me',
-    image: '/about.png'
+    image: 'https://res.cloudinary.com/dc9fmzb2e/image/upload/v1779813454/about_qergus.png'
   },
   {
     id: 'shop',
     link: 'Shop',
     href: '/shop',
     description: 'Find here some delicious',
-    image: '/cakes/3-1.jpg'
+    image: 'https://res.cloudinary.com/dc9fmzb2e/image/upload/v1779813485/3-1_qdm5ih.jpg'
   },
   {
     id: 'services',
     link: 'Services',
     href: '/services',
     description: 'Explain what you can more order',
-    image: '/services/services_3.JPG'
+    image: 'https://res.cloudinary.com/dc9fmzb2e/image/upload/v1779813518/services_3_re7flk.jpg'
   }
 
 ]

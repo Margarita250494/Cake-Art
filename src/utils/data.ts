@@ -1,4 +1,5 @@
-import { ShopCategory, ShopType } from '@/components/shop/utils/types'
+import { ShopCategory, ShopType } from '@/utils/types'
+
 
 export const dataShop: ShopType[] = [
   {

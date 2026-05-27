@@ -191,3 +191,13 @@ html, body {
     }
   }
 }
+
+.shop-card-title {
+  font-size: clamp(20px, 8cqw, 32px);
+  line-height: 1.25;
+}
+
+.shop-card-desc {
+  font-size: clamp(16px, 4cqw, 20px);
+  line-height: 1.5;
+}

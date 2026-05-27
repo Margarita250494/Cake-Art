@@ -6,7 +6,6 @@ import Image from 'next/image'
 const ServicesPage = () => {
   return (
     <main className="w-full h-full flex-1 flex flex-col gap-8 md:gap-14 justify-center items-center p-6">
-
       <div>
         <ul className="justify-center flex flex-wrap gap-10 md:gap-14">
           {services.map((service) => (

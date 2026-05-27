@@ -1,5 +1,6 @@
 'use client'
-import { TShopCard } from '@/components/shop/utils/types'
+
+import { TShopCard } from '@/utils/types'
 import clsx from 'clsx'
 import Image from 'next/image'
 
@@ -23,11 +24,11 @@ const ShopCard = ({title, description, image, isOpen, onClick}: Props) => {
       />
       <div
         className={clsx("absolute inset-0 w-full h-full flex flex-col" +
-          " gap-5 md:gap-10" +
-          " justify-center items-center p-6", isOpen ? 'opacity-100' : 'opacity-0')}
+          " gap-5 " +
+          " justify-center items-center p-3 ", isOpen ? 'opacity-100' : 'opacity-0')}
       >
-        <h5 className="text-[30px] text-center leading-10">{title}</h5>
-        <p className="text-[20px] leading-6.25 md:leading-10 text-center">{description}</p>
+        <h5 className="shop-card-title text-center ">{title}</h5>
+        <p className="shop-card-desc  text-center">{description}</p>
       </div>
     </div>
   );

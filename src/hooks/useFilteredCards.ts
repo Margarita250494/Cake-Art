@@ -1,15 +1,13 @@
-import { BUTTON_POSITIONS, CATEGORIES } from '@/components/shop/utils/constants'
-import { dataShop } from '@/components/shop/utils/data'
-import { ShopCategory } from '@/components/shop/utils/types'
+import { BUTTON_POSITIONS, CATEGORIES } from '@/utils/constants'
+import { Product, ShopCategory } from '@/utils/types'
 import { useMemo, useState } from 'react'
 
-export const useFilteredCards = () => {
+export const useFilteredCards = (products: Product[]) => {
   const [active, setActive] = useState<ShopCategory | null>(null)
 
-  const filtered = useMemo(
-    () => active ? dataShop.filter(d => d.category === active) : dataShop,
-    [active]
-  )
+  const filtered = active
+    ? products.filter(d => d.category === active)
+    : products
 
   const items = useMemo(() => {
     const result: Array<{

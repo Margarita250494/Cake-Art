@@ -1,11 +1,8 @@
-'use client'
+import ShopClient from '@/app/shop/ShopClient'
+import { getProducts } from "@/lib/getProducts";
 
-import dynamic from 'next/dynamic'
+export default async function Page() {
+  const products = await getProducts();
 
-const ShopPage = dynamic(() => import('@/components/shop/ShopPage'), {
-  loading: () => <p>Loading...</p>
-})
-
-export default function Page() {
-  return <ShopPage />
+  return <ShopClient products={products} />;
 }
