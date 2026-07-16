@@ -1,8 +1,11 @@
-import clsx from 'clsx'
+import clsx from "clsx";
 
-const MenuButton = ({handelClick, isClicked}: {
+const MenuButton = ({
+  handelClick,
+  isClicked,
+}: {
   handelClick: () => void;
-  isClicked: boolean
+  isClicked: boolean;
 }) => {
   return (
     <button
@@ -11,14 +14,15 @@ const MenuButton = ({handelClick, isClicked}: {
       onClick={handelClick}
     >
       <div
-        className={clsx("w-full h-full flex  items-center duration-500" +
-          " justify-center", isClicked ? 'gap-0 flex-row' : 'gap-2 flex-col')}
+        className={clsx(
+          "w-full h-full flex  items-center duration-500" + " justify-center",
+          isClicked ? "gap-0 flex-row" : "gap-2 flex-col",
+        )}
       >
-        <span className={isClicked ? 'arrow-close' : "arrow"} />
-        <span className={isClicked ? 'arrow-close' : "arrow"} />
-        <span className={isClicked ? 'arrow-close' : "arrow"} />
+        <span className={isClicked ? "arrow-close" : "arrow"} />
+        <span className={isClicked ? "arrow-close" : "arrow"} />
+        <span className={isClicked ? "arrow-close" : "arrow"} />
       </div>
-
     </button>
   );
 };

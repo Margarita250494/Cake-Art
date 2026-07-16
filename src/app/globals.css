@@ -1,5 +1,5 @@
-@import url('https://db.onlinewebfonts.com/c/d8436a566897114f1cb5d935780cf174?family=Granjon+LT+W01+Roman');
-@import url('https://db.onlinewebfonts.com/c/f4829115b4b155e1f9d5364dfc1c5300?family=Adobe+Garamond+W01+Bd');
+@import url("https://db.onlinewebfonts.com/c/d8436a566897114f1cb5d935780cf174?family=Granjon+LT+W01+Roman");
+@import url("https://db.onlinewebfonts.com/c/f4829115b4b155e1f9d5364dfc1c5300?family=Adobe+Garamond+W01+Bd");
 @import "tailwindcss";
 
 /*@import url('https://db.onlinewebfonts.com/c/f4829115b4b155e1f9d5364dfc1c5300?family=Adobe+Garamond+W01+Bd');*/
@@ -20,9 +20,8 @@
   --color-footer: var(--footer);
   --colot-text: var(--text);
   --font-sans: var(--font-sans);
-  --font-serif: 'Granjon LT W01 Roman', serif;
-  --font-mono: 'Adobe Garamond', serif;
-
+  --font-serif: "Granjon LT W01 Roman", serif;
+  --font-mono: "Adobe Garamond", serif;
 }
 
 /*@media (prefers-color-scheme: dark) {
@@ -32,17 +31,17 @@
   }
 }*/
 
-html, body {
+html,
+body {
   background: var(--background);
   font-family: var(--font-sans), serif;
-  min-height: 100vh;
-  min-width: 100vw;
+  min-height: 100dvh;
+  min-width: 100dvw;
   transition-property: background, opacity, transform, filter;
   transition-timing-function: ease-in-out;
   transition-duration: 500ms;
   position: relative;
   width: 100%;
-
 }
 
 /* Overlay */
@@ -146,39 +145,31 @@ html, body {
   }
 }
 
-
 @keyframes navigate_close_1 {
   0% {
-
     transform: rotate(0deg);
     background-color: gray;
   }
   50% {
-
     transform: rotate(-28deg);
     background-color: black;
   }
   100% {
-
     transform: rotate(0deg);
     background-color: gray;
   }
 }
 
-
 @keyframes navigate_close_2 {
   0% {
-
     transform: rotate(0deg);
     background-color: gray;
   }
   50% {
-
     transform: rotate(28deg);
     background-color: black;
   }
   100% {
-
     transform: rotate(0deg);
     background-color: gray;
   }

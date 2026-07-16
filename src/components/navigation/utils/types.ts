@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 export type NavigationType = {
   id: string;
@@ -6,8 +6,8 @@ export type NavigationType = {
   href: string;
   icon?: React.ReactNode;
   description?: string;
-  image?: string
-}
+  image?: string;
+};
 
 export type TTransitionLink = {
   children: React.ReactNode;

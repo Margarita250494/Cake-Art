@@ -2,13 +2,18 @@ import bundleAnalyzer from "@next/bundle-analyzer";
 import type { NextConfig } from "next";
 
 const withBundleAnalyzer = bundleAnalyzer({
-  enabled: process.env.ANALYZE === "true"
+  enabled: process.env.ANALYZE === "true",
 });
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ["res.cloudinary.com"]
-  }
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+      },
+    ],
+  },
 };
 
 export default withBundleAnalyzer(nextConfig);

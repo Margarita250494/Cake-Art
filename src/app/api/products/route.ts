@@ -1,10 +1,10 @@
-import { prisma } from '@/lib/prisma'
-import { NextResponse } from 'next/server'
+import { prisma } from "@/lib/prisma";
+import { NextResponse } from "next/server";
 
 //GET Product
 export async function GET() {
   const products = await prisma.product.findMany({
-    orderBy: {createdAt: "desc"}
+    orderBy: { createdAt: "desc" },
   });
 
   return NextResponse.json(products);
@@ -13,9 +13,9 @@ export async function GET() {
 //CREATE NEW PRODUCT
 export async function POST(req: Request) {
   try {
-    const body = await req.json()
+    const body = await req.json();
 
-    const {title, description, imageUrl, category, price} = body
+    const { title, description, imageUrl, category, price } = body;
 
     const product = await prisma.product.create({
       data: {
@@ -23,13 +23,16 @@ export async function POST(req: Request) {
         description,
         imageUrl,
         category,
-        price: Number(price)
-      }
-    })
+        price: Number(price),
+      },
+    });
 
-    return NextResponse.json(product)
+    return NextResponse.json(product);
   } catch (error) {
-    return NextResponse.json({error: 'Failed to create product'}, {status: 500})
+    return NextResponse.json(
+      { error: "Failed to create product" },
+      { status: 500 },
+    );
   }
 }
 
@@ -37,14 +40,14 @@ export async function POST(req: Request) {
 export async function PATCH(req: Request) {
   const body = await req.json();
 
-  const {id, ...data} = body;
+  const { id, ...data } = body;
 
   const updated = await prisma.product.update({
-    where: {id},
+    where: { id },
     data: {
       ...data,
-      price: Number(data.price)
-    }
+      price: Number(data.price),
+    },
   });
 
   return NextResponse.json(updated);
@@ -55,8 +58,8 @@ export async function DELETE(req: Request) {
   const body = await req.json();
 
   await prisma.product.delete({
-    where: {id: body.id}
+    where: { id: body.id },
   });
 
-  return NextResponse.json({success: true});
+  return NextResponse.json({ success: true });
 }

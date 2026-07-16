@@ -1,50 +1,57 @@
-import { BUTTON_POSITIONS, CATEGORIES } from '@/utils/constants'
-import { Product, ShopCategory } from '@/utils/types'
-import { useMemo, useState } from 'react'
+import { BUTTON_POSITIONS, CATEGORIES } from "@/utils/constants";
+import { Product, ShopCategory } from "@/utils/types";
+import { useMemo, useState } from "react";
 
 export const useFilteredCards = (products: Product[]) => {
-  const [active, setActive] = useState<ShopCategory | null>(null)
+  const [active, setActive] = useState<ShopCategory | null>(null);
 
   const filtered = active
-    ? products.filter(d => d.category === active)
-    : products
+    ? products.filter((d) => d.category === active)
+    : products;
 
   const items = useMemo(() => {
-    const result: Array<{
-      type: 'card';
-      data: typeof filtered[0];
-      index: number
-    } | { type: 'button'; cat: typeof CATEGORIES[0]; id: string }> = []
+    const result: Array<
+      | {
+          type: "card";
+          data: (typeof filtered)[0];
+          index: number;
+        }
+      | { type: "button"; cat: (typeof CATEGORIES)[0]; id: string }
+    > = [];
 
-    let cardIndex = 0
-    let btnIndex = 0
-    const positions = new Set(BUTTON_POSITIONS)
+    let cardIndex = 0;
+    let btnIndex = 0;
+    const positions = new Set(BUTTON_POSITIONS);
 
     for (let i = 0; i < filtered.length + CATEGORIES.length; i++) {
       if (positions.has(i) && btnIndex < CATEGORIES.length) {
         result.push({
-          type: 'button',
+          type: "button",
           cat: CATEGORIES[btnIndex],
-          id: `btn-${btnIndex}`
-        })
-        btnIndex++
+          id: `btn-${btnIndex}`,
+        });
+        btnIndex++;
       } else if (cardIndex < filtered.length) {
-        result.push({type: 'card', data: filtered[cardIndex], index: cardIndex})
-        cardIndex++
+        result.push({
+          type: "card",
+          data: filtered[cardIndex],
+          index: cardIndex,
+        });
+        cardIndex++;
       }
     }
 
     while (btnIndex < CATEGORIES.length) {
       result.push({
-        type: 'button',
+        type: "button",
         cat: CATEGORIES[btnIndex],
-        id: `btn-${btnIndex}`
-      })
-      btnIndex++
+        id: `btn-${btnIndex}`,
+      });
+      btnIndex++;
     }
 
-    return result
-  }, [filtered])
+    return result;
+  }, [filtered]);
 
-  return {active, setActive, items}
-}
+  return { active, setActive, items };
+};

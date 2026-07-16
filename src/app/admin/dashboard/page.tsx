@@ -1,15 +1,15 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import LoginForm from "./LoginForm";
+import DashboardClient from "./DashboardClient";
 
-export default async function AdminPage() {
+export default async function Page() {
   const cookieStore = await cookies();
 
   const session = cookieStore.get("admin_session");
 
-  if (session) {
-    redirect("/admin/dashboard");
+  if (!session) {
+    redirect("/admin");
   }
 
-  return <LoginForm />;
+  return <DashboardClient />;
 }

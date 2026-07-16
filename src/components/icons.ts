@@ -3,7 +3,7 @@ import {
   PiEnvelopeSimpleThin as Email,
   PiInstagramLogoThin as Instagram,
   PiTelegramLogoThin as Telegram,
-  PiWhatsappLogoThin as Whatsapp
+  PiWhatsappLogoThin as Whatsapp,
 } from "react-icons/pi";
 
-export { Instagram, Telegram, Whatsapp, Email, Close }
+export { Instagram, Telegram, Whatsapp, Email, Close };
