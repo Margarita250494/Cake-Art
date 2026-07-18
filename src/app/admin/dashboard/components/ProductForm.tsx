@@ -1,7 +1,15 @@
 import { TProductForm } from "@/utils/types";
+import Image from "next/image";
 import React from "react";
 
-const ProductForm = ({ form, editing, onChange, onSubmit }: TProductForm) => {
+const ProductForm = ({
+  form,
+  editing,
+  onChange,
+  onSubmit,
+  handleImageUpload,
+  uploading,
+}: TProductForm) => {
   return (
     <form onSubmit={onSubmit} className="flex flex-col gap-3">
       <input
@@ -19,12 +27,20 @@ const ProductForm = ({ form, editing, onChange, onSubmit }: TProductForm) => {
         className="border border-gray focus:outline-0 py-1 px-1"
       />
       <input
-        name="imageUrl"
-        placeholder="Image URL"
-        value={form.imageUrl}
-        onChange={onChange}
+        type="file"
+        accept="image/*"
+        onChange={handleImageUpload}
         className="border border-gray focus:outline-0 py-1 px-1"
       />
+      {form.imageUrl && (
+        <Image
+          src={form.imageUrl}
+          alt="preview"
+          className="w-40 h-40 object-cover"
+          width={300}
+          height={200}
+        />
+      )}
       <input
         name="category"
         placeholder="Category"
@@ -40,7 +56,11 @@ const ProductForm = ({ form, editing, onChange, onSubmit }: TProductForm) => {
         className="border border-gray focus:outline-0 py-1 px-1"
       />
 
-      <button type="submit" className="bg-black text-white p-2">
+      <button
+        disabled={uploading}
+        type="submit"
+        className="bg-black text-white p-2"
+      >
         {editing ? "Update product" : "Create product"}
       </button>
     </form>

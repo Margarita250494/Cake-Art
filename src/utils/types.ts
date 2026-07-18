@@ -42,6 +42,7 @@ export type Product = {
   title: string;
   description: string;
   imageUrl: string;
+  imageId?: string | null;
   category: string;
   price: number;
 };
@@ -63,10 +64,18 @@ export type TProductForm = {
   editing: Product | null;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit: (e: React.SubmitEvent<HTMLFormElement>) => void;
+  handleImageUpload: (e: React.ChangeEvent<HTMLInputElement>) => Promise<void>;
+  uploading: boolean;
 };
 
 export type TProductList = {
   products: Product[];
+  onEdit: (product: Product) => void;
+  onDelete: (id: string) => Promise<void>;
+};
+
+export type ProductAdminCardProps = {
+  product: Product;
   onEdit: (product: Product) => void;
   onDelete: (id: string) => Promise<void>;
 };

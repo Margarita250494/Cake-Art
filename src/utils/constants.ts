@@ -9,3 +9,12 @@ export const CATEGORIES = [
 
 // Fixed random insertion indices so they don't shift on re-render
 export const BUTTON_POSITIONS = [1, 4, 7, 11]; // tweak to taste
+
+export const initialProductForm = {
+  title: "",
+  description: "",
+  imageUrl: "",
+  imageId: "",
+  category: "",
+  price: "",
+};

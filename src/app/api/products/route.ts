@@ -1,3 +1,4 @@
+import cloudinary from "@/lib/cloudinary";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
@@ -14,8 +15,8 @@ export async function GET() {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-
-    const { title, description, imageUrl, category, price } = body;
+    console.log("API BODY:", body);
+    const { title, description, imageUrl, category, price, imageId } = body;
 
     const product = await prisma.product.create({
       data: {
@@ -24,6 +25,7 @@ export async function POST(req: Request) {
         imageUrl,
         category,
         price: Number(price),
+        imageId,
       },
     });
 
@@ -57,8 +59,24 @@ export async function PATCH(req: Request) {
 export async function DELETE(req: Request) {
   const body = await req.json();
 
+  const product = await prisma.product.findUnique({
+    where: {
+      id: body.id,
+    },
+  });
+
+  if (!product) {
+    return NextResponse.json({ message: "Product not found" }, { status: 404 });
+  }
+
+  if (product.imageId) {
+    await cloudinary.uploader.destroy(product.imageId);
+  }
+
   await prisma.product.delete({
-    where: { id: body.id },
+    where: {
+      id: body.id,
+    },
   });
 
   return NextResponse.json({ success: true });

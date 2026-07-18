@@ -15,6 +15,8 @@ export default function DashboardClient() {
     handleChange,
     form,
     editing,
+    uploading,
+    handleImageUpload,
   } = useProducts();
 
   return (
@@ -29,6 +31,8 @@ export default function DashboardClient() {
         editing={editing}
         onChange={handleChange}
         onSubmit={handleSubmit}
+        handleImageUpload={handleImageUpload}
+        uploading={uploading}
       />
       <ProductList
         products={products}
