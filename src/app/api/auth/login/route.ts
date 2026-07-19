@@ -17,6 +17,11 @@ export async function POST(request: Request) {
   }
 
   const response = NextResponse.json({ message: "Login success" });
-  response.cookies.set("admin_session", "true");
+  response.cookies.set("admin_session", process.env.ADMIN_SESSION_TOKEN!, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    path: "/",
+  });
   return response;
 }

@@ -7,7 +7,7 @@ export default async function Page() {
 
   const session = cookieStore.get("admin_session");
 
-  if (!session) {
+  if (session?.value !== process.env.ADMIN_SESSION_TOKEN) {
     redirect("/admin");
   }
 
