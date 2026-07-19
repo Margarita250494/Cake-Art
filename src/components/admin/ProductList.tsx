@@ -1,10 +1,10 @@
-import { ProductAdminCard } from "@/app/admin/dashboard/components/ProductAdminCard";
+import { ProductAdminCard } from "@/components/admin/ProductAdminCard";
 import { TProductList } from "@/utils/types";
 import React from "react";
 
 const ProductList = ({ products, onEdit, onDelete }: TProductList) => {
   return (
-    <div className="flex flex-col  gap-3">
+    <div className="flex flex-wrap gap-4 justify-center">
       {products.map((p) => (
         <ProductAdminCard
           key={p.id}

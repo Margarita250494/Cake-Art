@@ -5,7 +5,6 @@ import clsx from "clsx";
 const CategoryButtons = ({
   cat,
   active,
-  className,
   onCategoryChange,
   isMobile,
 }: TCategoryButtons) => {

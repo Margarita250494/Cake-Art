@@ -1,3 +1,4 @@
+import AdminMainButton from "@/components/buttons/AdminMainButton";
 import { useRouter } from "next/navigation";
 import React from "react";
 
@@ -10,12 +11,12 @@ const LogoutButton = () => {
     router.push("/");
   };
   return (
-    <button
+    <AdminMainButton
+      disabled={false}
+      typeButton="button"
+      labelButton="Logout"
       onClick={handleLogout}
-      className="font-medium text-foreground cursor-pointer scale-100 duration-500 hover:scale-[1.1]"
-    >
-      Logout
-    </button>
+    />
   );
 };
 export default LogoutButton;

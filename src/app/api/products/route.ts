@@ -15,7 +15,6 @@ export async function GET() {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    console.log("API BODY:", body);
     const { title, description, imageUrl, category, price, imageId } = body;
 
     const product = await prisma.product.create({

@@ -1,64 +1,40 @@
 "use client";
-import { useRouter } from "next/navigation";
 
-import React, { useState } from "react";
+import AdminMainButton from "@/components/buttons/AdminMainButton";
+import Input from "@/components/form/Input";
+import { useLogin } from "@/hooks/useLogin";
 
 export const LoginForm = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const router = useRouter();
-  const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const res = await fetch("/api/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    });
-
-    const data = await res.json();
-
-    if (res.ok) {
-      router.push("/admin/dashboard");
-    }
-  };
+  const { email, setEmail, handleSubmit, password, setPassword } = useLogin();
   return (
     <section className="w-full flex-1 flex justify-center items-center">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-4 w-full max-w-[400px]"
+        className="flex flex-col gap-4 w-full max-w-100"
       >
         <div className="flex flex-col gap-2">
-          <label htmlFor="login">Email</label>
-          <input
+          <Input
+            label="Login"
             id="login"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="border border-gray"
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="password">Password</label>
-          <input
+          <Input
+            label="Password"
             type="password"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="border border-gray"
           />
         </div>
-        <button
-          type="submit"
-          className="bg-black text-white p-2 cursor-pointer disabled:opacity-50 disabled:cursor-none disabled:pointer-events-none"
+        <AdminMainButton
           disabled={!email || !password}
-        >
-          Login
-        </button>
+          typeButton="submit"
+          labelButton="Log In"
+        />
       </form>
     </section>
   );

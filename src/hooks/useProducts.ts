@@ -38,7 +38,6 @@ export const useProducts = () => {
 
   const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("FORM BEFORE SAVE:", form);
     try {
       if (editing) {
         await updateProduct(editing.id, {

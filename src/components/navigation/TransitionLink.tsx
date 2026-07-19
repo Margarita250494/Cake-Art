@@ -1,6 +1,7 @@
 "use client";
-import { TTransitionLink } from "@/components/navigation/utils/types";
+
 import { usePageTransition } from "@/hooks/usePageTransition";
+import { TTransitionLink } from "@/utils/types";
 import Link from "next/link";
 import React from "react";
 

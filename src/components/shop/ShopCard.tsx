@@ -44,7 +44,9 @@ const ShopCard = ({
       >
         <h5 className="shop-card-title text-center ">{title}</h5>
         <p className="shop-card-desc  text-center">{description}</p>
-        <p className="shop-card-desc  text-center">{price} Rub.</p>
+        {price !== 0 && (
+          <p className="shop-card-desc  text-center">{price} Rub.</p>
+        )}
       </div>
     </div>
   );

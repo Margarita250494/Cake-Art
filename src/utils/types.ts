@@ -1,19 +1,11 @@
 import { CATEGORIES } from "@/utils/constants";
-import React from "react";
+import React, { ChangeEventHandler } from "react";
 
 export enum ShopCategory {
   SWEETS = "sweet",
   NON_SWEETS = "non-sweet",
   CAKES = "cakes",
 }
-
-export type ShopType = {
-  id: string;
-  title?: string;
-  description: string;
-  image: string;
-  category: ShopCategory;
-};
 
 export type TShopCard = {
   title?: string;
@@ -32,7 +24,6 @@ export type TButtonCard = {
 export type TCategoryButtons = {
   cat: (typeof CATEGORIES)[0];
   active: ShopCategory | null;
-  className?: string;
   onCategoryChange: (value: ShopCategory | null) => void;
   isMobile: boolean;
 };
@@ -78,4 +69,43 @@ export type ProductAdminCardProps = {
   product: Product;
   onEdit: (product: Product) => void;
   onDelete: (id: string) => Promise<void>;
+};
+
+export type TInput = {
+  label: string;
+  classNameLabel?: string;
+  id: string;
+  type: string;
+  value: string | number | readonly string[] | undefined;
+  onChange: ChangeEventHandler<HTMLInputElement, HTMLInputElement> | undefined;
+  classNameInput?: string;
+  placeholder?: string;
+};
+
+export type TInputImage = {
+  handleImageUpload: (e: React.ChangeEvent<HTMLInputElement>) => Promise<void>;
+  imageUrl: string;
+};
+
+export type TAdminMainButton = {
+  disabled: boolean;
+  typeButton: "submit" | "reset" | "button" | undefined;
+  labelButton: string;
+  onClick?: () => Promise<void>;
+};
+
+export type NavigationType = {
+  id: string;
+  link?: string;
+  href: string;
+  icon?: React.ReactNode;
+  description?: string;
+  image?: string;
+};
+
+export type TTransitionLink = {
+  children: React.ReactNode;
+  href: string;
+  handleClose: () => void;
+  className?: string;
 };

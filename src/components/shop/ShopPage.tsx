@@ -2,29 +2,22 @@
 import CategoryButtons from "@/components/shop/CategoryButtons";
 import HowToOrder from "@/components/shop/HowToOrder";
 import ShopCard from "@/components/shop/ShopCard";
-import { useFilteredCards } from "@/hooks/useFilteredCards";
-import { useSwitchingAnimation } from "@/hooks/useSwitchingAnimation";
+import { useShopCard } from "@/hooks/useShopCard";
 import { Shop } from "@/utils/types";
 import clsx from "clsx";
-import { useState } from "react";
 
 const ShopPage = ({ products }: Shop) => {
-  const { active, setActive, items } = useFilteredCards(products);
-  const { visible, animate } = useSwitchingAnimation();
-
-  const [openCardId, setOpenCardId] = useState<string | null>(null);
-
-  const handleCardClick = (id: string) => {
-    setOpenCardId((prev) => (prev === id ? null : id));
-  };
-  const handleCategoryChange = (value: typeof active) => {
-    if (value === active) return;
-    setOpenCardId(null);
-    animate(() => setActive(value));
-  };
+  const {
+    handleCardClick,
+    handleCategoryChange,
+    openCardId,
+    items,
+    visible,
+    active,
+  } = useShopCard(products);
   return (
-    <main className="p-6 w-full flex-1 flex flex-col gap-4 justify-center items-center">
-      <ul className="flex flex-row w-full gap-4 justify-center sm:hidden">
+    <main className="p-4 md:p-6 w-full flex-1 flex flex-col gap-4 justify-center items-center">
+      <ul className="flex flex-row w-full gap-3 justify-between sm:hidden">
         {items.map((item) => {
           if (item.type === "button") {
             return (

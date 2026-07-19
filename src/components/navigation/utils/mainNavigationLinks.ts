@@ -1,4 +1,4 @@
-import { NavigationType } from "@/components/navigation/utils/types";
+import { NavigationType } from "@/utils/types";
 
 export const mainNavigationLinks: NavigationType[] = [
   {

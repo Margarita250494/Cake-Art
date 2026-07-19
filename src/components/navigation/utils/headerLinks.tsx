@@ -1,5 +1,5 @@
 import { Email, Instagram, Telegram, Whatsapp } from "@/components/icons";
-import { NavigationType } from "@/components/navigation/utils/types";
+import { NavigationType } from "@/utils/types";
 
 export const headerLinks: NavigationType[] = [
   {

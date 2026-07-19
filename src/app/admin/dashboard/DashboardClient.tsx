@@ -1,8 +1,8 @@
 "use client";
 
-import LogoutButton from "@/app/admin/dashboard/components/LogoutButton";
-import ProductForm from "@/app/admin/dashboard/components/ProductForm";
-import ProductList from "@/app/admin/dashboard/components/ProductList";
+import LogoutButton from "@/components/admin/LogoutButton";
+import ProductForm from "@/components/admin/ProductForm";
+import ProductList from "@/components/admin/ProductList";
 import { useProducts } from "@/hooks/useProducts";
 import React from "react";
 
@@ -22,7 +22,7 @@ export default function DashboardClient() {
   return (
     <div className="p-4 md:p-10 flex flex-col gap-8">
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl">Admin Panel</h1>
+        <h1 className="text-[32px]">Admin Panel</h1>
         <LogoutButton />
       </div>
 
