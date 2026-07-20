@@ -1,3 +1,5 @@
+"use client";
+
 import { useRouter } from "next/navigation";
 
 function sleep(ms: number) {
@@ -11,10 +13,10 @@ export function usePageTransition() {
     const overlay = document.getElementById("page-transition-overlay");
 
     overlay?.classList.add("active");
+
     await sleep(500);
+
     router.push(href);
-    await sleep(500);
-    overlay?.classList.remove("active");
   };
 
   return { navigate };

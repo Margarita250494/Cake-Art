@@ -109,3 +109,9 @@ export type TTransitionLink = {
   handleClose: () => void;
   className?: string;
 };
+
+export type TServiceCard = {
+  title: string;
+  description: string;
+  image: string;
+};

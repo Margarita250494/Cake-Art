@@ -19,6 +19,12 @@ export async function POST(request: Request) {
       const stream = cloudinary.uploader.upload_stream(
         {
           folder: "cake-art-products",
+          transformation: [
+            {
+              quality: "auto",
+              fetch_format: "auto",
+            },
+          ],
         },
         (error, result) => {
           if (error) {

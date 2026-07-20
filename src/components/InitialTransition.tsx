@@ -1,7 +1,11 @@
 "use client";
+
+import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 export default function InitialTransition() {
+  const pathname = usePathname();
+
   useEffect(() => {
     const overlay = document.getElementById("page-transition-overlay");
 
@@ -10,7 +14,7 @@ export default function InitialTransition() {
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [pathname]);
 
   return null;
 }
