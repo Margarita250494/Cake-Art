@@ -28,7 +28,7 @@ export const ProductAdminCard = ({
         </p>
 
         <span>
-          Category: <span className="font-light">{product.category}</span>
+          Category: <span className="font-light">{product.category?.name}</span>
         </span>
       </div>
       <div className="flex justify-between gap-2 mt-auto">

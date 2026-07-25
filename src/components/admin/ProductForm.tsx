@@ -1,8 +1,8 @@
 import AdminMainButton from "@/components/buttons/AdminMainButton";
 import Input from "@/components/form/Input";
 import InputImage from "@/components/form/InputImage";
-import { TProductForm } from "@/utils/types";
-import React from "react";
+import { Category, TProductForm } from "@/utils/types";
+import React, { useEffect, useState } from "react";
 
 const ProductForm = ({
   form,
@@ -12,6 +12,16 @@ const ProductForm = ({
   handleImageUpload,
   uploading,
 }: TProductForm) => {
+  const [categories, setCategories] = useState<Category[]>([]);
+  useEffect(() => {
+    async function fetchCategories() {
+      const response = await fetch("/api/categories");
+      const data = await response.json();
+
+      setCategories(data);
+    }
+    fetchCategories();
+  }, []);
   return (
     <form onSubmit={onSubmit} className="flex flex-col gap-3 text-[18px]">
       <Input
@@ -35,14 +45,22 @@ const ProductForm = ({
         handleImageUpload={handleImageUpload}
         imageUrl={form.imageUrl}
       />
-      <Input
-        classNameLabel="sr-only"
-        label="Category"
-        id="category"
-        type="text"
-        value={form.category}
+
+      <select
+        name="categoryId"
+        value={form.categoryId}
         onChange={onChange}
-      />
+        className="border border-gray/30 py-1 px-1"
+      >
+        <option value="">Select category</option>
+
+        {categories.map((category) => (
+          <option key={category.id} value={category.id}>
+            {category.name}
+          </option>
+        ))}
+      </select>
+
       <Input
         classNameLabel="sr-only"
         label="Price"

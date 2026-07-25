@@ -29,7 +29,9 @@ export const useProducts = () => {
     setEditing(null);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => {
     setForm((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
@@ -73,7 +75,7 @@ export const useProducts = () => {
       description: product.description,
       imageUrl: product.imageUrl,
       imageId: product.imageId ?? "",
-      category: product.category,
+      categoryId: product.categoryId ?? "",
       price: String(product.price),
     });
   };

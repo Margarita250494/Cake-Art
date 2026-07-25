@@ -7,6 +7,6 @@ const ShopPage = dynamic(() => import("@/components/shop/ShopPage"), {
   loading: () => <p>Loading...</p>,
 });
 
-export default function ShopClient({ products }: Shop) {
-  return <ShopPage products={products} />;
+export default function ShopClient({ products, categories }: Shop) {
+  return <ShopPage products={products} categories={categories} />;
 }

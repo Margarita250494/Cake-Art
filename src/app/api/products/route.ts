@@ -5,7 +5,9 @@ import { NextResponse } from "next/server";
 //GET Product
 export async function GET() {
   const products = await prisma.product.findMany({
-    orderBy: { createdAt: "desc" },
+    include: {
+      category: true,
+    },
   });
 
   return NextResponse.json(products);
@@ -15,14 +17,14 @@ export async function GET() {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { title, description, imageUrl, category, price, imageId } = body;
+    const { title, description, imageUrl, categoryId, price, imageId } = body;
 
     const product = await prisma.product.create({
       data: {
         title,
         description,
         imageUrl,
-        category,
+        categoryId,
         price: Number(price),
         imageId,
       },

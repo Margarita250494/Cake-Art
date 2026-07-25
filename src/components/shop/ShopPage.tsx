@@ -6,7 +6,7 @@ import { useShopCard } from "@/hooks/useShopCard";
 import { Shop } from "@/utils/types";
 import clsx from "clsx";
 
-const ShopPage = ({ products }: Shop) => {
+const ShopPage = ({ products, categories }: Shop) => {
   const {
     handleCardClick,
     handleCategoryChange,
@@ -14,7 +14,7 @@ const ShopPage = ({ products }: Shop) => {
     items,
     visible,
     active,
-  } = useShopCard(products);
+  } = useShopCard(products, categories);
   return (
     <main className="p-4 md:p-6 w-full flex-1 flex flex-col gap-4 justify-center items-center">
       <ul className="flex flex-row w-full gap-3 justify-between sm:hidden">
@@ -22,7 +22,7 @@ const ShopPage = ({ products }: Shop) => {
           if (item.type === "button") {
             return (
               <CategoryButtons
-                key={item.cat.label}
+                key={item.cat.id}
                 cat={item.cat}
                 active={active}
                 isMobile
@@ -44,7 +44,7 @@ const ShopPage = ({ products }: Shop) => {
           if (item.type === "button") {
             return (
               <CategoryButtons
-                key={item.cat.label}
+                key={item.cat.id}
                 cat={item.cat}
                 active={active}
                 isMobile={false}

@@ -1,10 +1,10 @@
 import { useFilteredCards } from "@/hooks/useFilteredCards";
 import { useSwitchingAnimation } from "@/hooks/useSwitchingAnimation";
-import { Product } from "@/utils/types";
+import { Category, Product } from "@/utils/types";
 import { useState } from "react";
 
-export const useShopCard = (products: Product[]) => {
-  const { active, setActive, items } = useFilteredCards(products);
+export const useShopCard = (products: Product[], categories: Category[]) => {
+  const { active, setActive, items } = useFilteredCards(products, categories);
   const { visible, animate } = useSwitchingAnimation();
   const [openCardId, setOpenCardId] = useState<string | null>(null);
 

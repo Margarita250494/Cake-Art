@@ -16,9 +16,9 @@ const CategoryButtons = ({
       )}
     >
       <ButtonCard
-        label={cat.label}
-        active={active === cat.value}
-        onClick={() => onCategoryChange(cat.value)}
+        label={cat.name}
+        active={active?.id === cat.id}
+        onClick={() => onCategoryChange(cat)}
       />
     </li>
   );

@@ -1,4 +1,3 @@
-import { CATEGORIES } from "@/utils/constants";
 import React, { ChangeEventHandler } from "react";
 
 export enum ShopCategory {
@@ -21,11 +20,10 @@ export type TButtonCard = {
   onClick: () => void;
 };
 
-export type TCategoryButtons = {
-  cat: (typeof CATEGORIES)[0];
-  active: ShopCategory | null;
-  onCategoryChange: (value: ShopCategory | null) => void;
-  isMobile: boolean;
+export type Category = {
+  id: string;
+  name: string;
+  slug: string;
 };
 
 export type Product = {
@@ -33,27 +31,37 @@ export type Product = {
   title: string;
   description: string;
   imageUrl: string;
-  imageId?: string | null;
-  category: string;
+  imageId: string | null;
   price: number;
+  categoryId: string | null;
+  category: Category | null;
 };
-
+export type TCategoryButtons = {
+  cat: Category;
+  active: Category | null;
+  onCategoryChange: (value: Category | null) => void;
+  isMobile: boolean;
+};
 export type Shop = {
   products: Product[];
+  categories: Category[];
 };
 
 export type FormState = {
   title: string;
   description: string;
   imageUrl: string;
-  category: string;
+  imageId: string;
+  categoryId: string;
   price: string;
 };
 
 export type TProductForm = {
   form: FormState;
   editing: Product | null;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => void;
   onSubmit: (e: React.SubmitEvent<HTMLFormElement>) => void;
   handleImageUpload: (e: React.ChangeEvent<HTMLInputElement>) => Promise<void>;
   uploading: boolean;

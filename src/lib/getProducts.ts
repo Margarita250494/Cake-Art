@@ -1,5 +1,9 @@
 import { prisma } from "@/lib/prisma";
 
 export async function getProducts() {
-  return prisma.product.findMany();
+  return prisma.product.findMany({
+    include: {
+      category: true,
+    },
+  });
 }

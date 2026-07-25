@@ -27,7 +27,7 @@ export const createProduct = async (product: {
   description: string;
   imageUrl: string;
   imageId?: string;
-  category: string;
+  categoryId: string;
   price: number;
 }) => {
   const res = await fetch("/api/products", {
@@ -52,7 +52,7 @@ export const updateProduct = async (
     description: string;
     imageUrl: string;
     imageId?: string;
-    category: string;
+    categoryId: string;
     price: number;
   },
 ) => {
