@@ -1,8 +1,8 @@
 import AdminMainButton from "@/components/buttons/AdminMainButton";
 import Input from "@/components/form/Input";
 import InputImage from "@/components/form/InputImage";
-import { Category, TProductForm } from "@/utils/types";
-import React, { useEffect, useState } from "react";
+import { TProductForm } from "@/utils/types";
+import React from "react";
 
 const ProductForm = ({
   form,
@@ -11,17 +11,9 @@ const ProductForm = ({
   onSubmit,
   handleImageUpload,
   uploading,
+  categories,
+  setCategories,
 }: TProductForm) => {
-  const [categories, setCategories] = useState<Category[]>([]);
-  useEffect(() => {
-    async function fetchCategories() {
-      const response = await fetch("/api/categories");
-      const data = await response.json();
-
-      setCategories(data);
-    }
-    fetchCategories();
-  }, []);
   return (
     <form onSubmit={onSubmit} className="flex flex-col gap-3 text-[18px]">
       <Input

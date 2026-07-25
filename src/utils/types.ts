@@ -65,6 +65,8 @@ export type TProductForm = {
   onSubmit: (e: React.SubmitEvent<HTMLFormElement>) => void;
   handleImageUpload: (e: React.ChangeEvent<HTMLInputElement>) => Promise<void>;
   uploading: boolean;
+  categories: Category[];
+  setCategories: React.Dispatch<React.SetStateAction<Category[]>>;
 };
 
 export type TProductList = {

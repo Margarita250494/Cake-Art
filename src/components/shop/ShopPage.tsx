@@ -14,10 +14,11 @@ const ShopPage = ({ products, categories }: Shop) => {
     items,
     visible,
     active,
+    hasProducts,
   } = useShopCard(products, categories);
   return (
-    <main className="p-4 md:p-6 w-full flex-1 flex flex-col gap-4 justify-center items-center">
-      <ul className="flex flex-row w-full gap-3 justify-between sm:hidden">
+    <main className="p-4 md:p-6 w-full flex-1 flex flex-col gap-6 justify-between sm:justify-center items-center">
+      <ul className="flex flex-row flex-wrap items-center w-full gap-x-8 gap-y-3 justify-center sm:hidden">
         {items.map((item) => {
           if (item.type === "button") {
             return (
@@ -36,7 +37,7 @@ const ShopPage = ({ products, categories }: Shop) => {
       <ul
         style={{ transition: "opacity 250ms ease, transform 250ms ease" }}
         className={clsx(
-          "w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 auto-rows-[30vw] gap-3",
+          "w-full  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 auto-rows-[30vw] gap-3",
           visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2",
         )}
       >
@@ -75,10 +76,20 @@ const ShopPage = ({ products, categories }: Shop) => {
             </li>
           );
         })}
-        <li className="w-full h-full flex justify-center items-center">
+        {!hasProducts && active && (
+          <li className="col-span-full row-span-full flex items-center justify-center">
+            <p className="text-xl text-center">
+              In this category we don&#39;t have products yet
+            </p>
+          </li>
+        )}
+        <li className="w-full h-full hidden sm:flex justify-center items-center">
           <HowToOrder />
         </li>
       </ul>
+      <div className="flex sm:hidden">
+        <HowToOrder />
+      </div>
     </main>
   );
 };

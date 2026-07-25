@@ -4,7 +4,10 @@ import { Category, Product } from "@/utils/types";
 import { useState } from "react";
 
 export const useShopCard = (products: Product[], categories: Category[]) => {
-  const { active, setActive, items } = useFilteredCards(products, categories);
+  const { active, setActive, items, hasProducts } = useFilteredCards(
+    products,
+    categories,
+  );
   const { visible, animate } = useSwitchingAnimation();
   const [openCardId, setOpenCardId] = useState<string | null>(null);
 
@@ -24,5 +27,6 @@ export const useShopCard = (products: Product[], categories: Category[]) => {
     items,
     visible,
     active,
+    hasProducts,
   };
 };

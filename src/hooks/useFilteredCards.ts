@@ -59,5 +59,7 @@ export const useFilteredCards = (
     return result;
   }, [filtered, categories]);
 
-  return { active, setActive, items };
+  const hasProducts = filtered.length > 0;
+
+  return { active, setActive, items, hasProducts };
 };

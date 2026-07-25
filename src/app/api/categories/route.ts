@@ -2,18 +2,55 @@ import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
 export async function GET() {
+  const categories = await prisma.category.findMany({
+    orderBy: {
+      createdAt: "asc",
+    },
+  });
+
+  return NextResponse.json(categories);
+}
+
+export async function POST(req: Request) {
   try {
-    const categories = await prisma.category.findMany({
-      orderBy: {
-        createdAt: "asc",
+    const { name } = await req.json();
+
+    const cleanName = name.trim();
+
+    const existingCategory = await prisma.category.findFirst({
+      where: {
+        name: {
+          equals: cleanName,
+          mode: "insensitive",
+        },
       },
     });
 
-    return NextResponse.json(categories);
+    if (existingCategory) {
+      return NextResponse.json(
+        {
+          error: "Category already exists",
+        },
+        {
+          status: 409,
+        },
+      );
+    }
+
+    const category = await prisma.category.create({
+      data: {
+        name,
+        slug: name.toLowerCase().trim().replaceAll(" ", "-"),
+      },
+    });
+
+    return NextResponse.json(category);
   } catch (error) {
+    console.error(error);
+
     return NextResponse.json(
       {
-        message: "Failed to fetch categories",
+        error: "Failed to create category",
       },
       {
         status: 500,
@@ -22,33 +59,56 @@ export async function GET() {
   }
 }
 
-export async function POST(request: Request) {
+export async function DELETE(req: Request) {
   try {
-    const { name, slug } = await request.json();
+    const { id } = await req.json();
 
-    if (!name || !slug) {
+    const category = await prisma.category.findUnique({
+      where: {
+        id,
+      },
+      include: {
+        products: true,
+      },
+    });
+
+    if (!category) {
       return NextResponse.json(
         {
-          message: "Name and slug are required",
+          error: "Category not found",
         },
         {
-          status: 400,
+          status: 404,
         },
       );
     }
 
-    const category = await prisma.category.create({
-      data: {
-        name,
-        slug,
+    if (category.products.length > 0) {
+      return NextResponse.json(
+        {
+          error: "Cannot delete category with products",
+        },
+        {
+          status: 409,
+        },
+      );
+    }
+
+    await prisma.category.delete({
+      where: {
+        id,
       },
     });
 
-    return NextResponse.json(category);
+    return NextResponse.json({
+      success: true,
+    });
   } catch (error) {
+    console.error(error);
+
     return NextResponse.json(
       {
-        message: "Failed to create category",
+        error: "Failed to delete category",
       },
       {
         status: 500,
