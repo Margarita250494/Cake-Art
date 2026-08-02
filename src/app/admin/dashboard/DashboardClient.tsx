@@ -27,19 +27,24 @@ export default function DashboardClient() {
         <h1 className="text-[32px]">Admin Panel</h1>
         <LogoutButton />
       </div>
-      <CategoryManager categories={categories} setCategories={setCategories} />
-      <div className="border border-gray p-4 flex flex-col gap-4">
-        <h2 className="text-xl">Add new Product</h2>
-        <ProductForm
-          form={form}
-          editing={editing}
-          onChange={handleChange}
-          onSubmit={handleSubmit}
-          handleImageUpload={handleImageUpload}
-          uploading={uploading}
+      <div className="flex flex-col md:flex-row gap-4 md:gap-6 w-full">
+        <CategoryManager
           categories={categories}
           setCategories={setCategories}
         />
+        <div className="border border-gray p-4 flex flex-col gap-4 w-full">
+          <h2 className="text-[26px]">Add new Product</h2>
+          <ProductForm
+            form={form}
+            editing={editing}
+            onChange={handleChange}
+            onSubmit={handleSubmit}
+            handleImageUpload={handleImageUpload}
+            uploading={uploading}
+            categories={categories}
+            setCategories={setCategories}
+          />
+        </div>
       </div>
 
       <ProductList

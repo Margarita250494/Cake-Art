@@ -58,5 +58,43 @@ export const useHandleCategories = (
 
     setCategories((prev) => prev.filter((category) => category.id !== id));
   };
-  return { name, handleSubmit, setName, handleDelete, error, showError };
+
+  const handleUpdate = async (
+    id: string,
+    name: string,
+  ): Promise<Category | undefined> => {
+    if (!name.trim()) return;
+    const res = await fetch("/api/categories", {
+      method: "PATCH",
+      body: JSON.stringify({
+        id,
+        name,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      showErrorMessage(data.error);
+      return;
+    }
+
+    setCategories((prev) =>
+      prev.map((category) => (category.id === id ? data : category)),
+    );
+
+    return data;
+  };
+  return {
+    name,
+    handleSubmit,
+    setName,
+    handleDelete,
+    error,
+    showError,
+    handleUpdate,
+  };
 };

@@ -116,3 +116,43 @@ export async function DELETE(req: Request) {
     );
   }
 }
+
+export async function PATCH(req: Request) {
+  try {
+    const { id, name } = await req.json();
+    if (!id || !name.trim()) {
+      return NextResponse.json(
+        {
+          error: "Invalid data",
+        },
+        {
+          status: 404,
+        },
+      );
+    }
+
+    const slug = name.toLowerCase().trim().replaceAll("", "-");
+
+    const updateCategory = await prisma.category.update({
+      where: {
+        id,
+      },
+      data: {
+        name,
+        slug,
+      },
+    });
+
+    return NextResponse.json(updateCategory);
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json(
+      {
+        error: "Failed to update category",
+      },
+      {
+        status: 500,
+      },
+    );
+  }
+}

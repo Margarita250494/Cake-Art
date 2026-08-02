@@ -10,7 +10,7 @@ const InputImage = ({ handleImageUpload, imageUrl }: TInputImage) => {
         accept="image/*"
         onChange={handleImageUpload}
         required
-        className="border border-gray/30 focus:outline-0 py-1 px-1"
+        className="border border-gray/30 focus:outline-0 py-2 px-1 h-[45px] flex justify-center items-center"
       />
       {imageUrl && (
         <Image

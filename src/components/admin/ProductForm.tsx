@@ -42,7 +42,7 @@ const ProductForm = ({
         name="categoryId"
         value={form.categoryId}
         onChange={onChange}
-        className="border border-gray/30 py-1 px-1"
+        className="border border-gray/30 py-1 px-1 h-[45px]"
       >
         <option value="">Select category</option>
 

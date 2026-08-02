@@ -24,7 +24,7 @@ const Input = ({
         value={value}
         onChange={onChange}
         className={clsx(
-          "border border-gray/30 focus:outline-0 p-2 text-[18px] placeholder:text-[18px]",
+          "border border-gray/30 focus:outline-0 p-2 text-[18px] placeholder:text-[18px] h-[45px]",
           classNameInput,
         )}
       />

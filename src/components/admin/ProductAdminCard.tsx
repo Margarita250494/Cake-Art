@@ -1,3 +1,4 @@
+import { Delete, Edit } from "@/components/icons";
 import { ProductAdminCardProps } from "@/utils/types";
 import Image from "next/image";
 import React from "react";
@@ -36,7 +37,7 @@ export const ProductAdminCard = ({
           onClick={() => onEdit(product)}
           className="cursor-pointer bg-black text-white p-2 duration-200 hover:bg-white hover:text-black"
         >
-          Edit
+          <Edit className="w-6 h-6" />
         </button>
 
         <button
@@ -46,7 +47,7 @@ export const ProductAdminCard = ({
           }}
           className="cursor-pointer bg-white text-black p-2 duration-200 hover:bg-black hover:text-white"
         >
-          Delete
+          <Delete className="w-6 h-6" />
         </button>
       </div>
     </div>

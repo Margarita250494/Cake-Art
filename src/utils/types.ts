@@ -125,3 +125,8 @@ export type TServiceCard = {
   description: string;
   image: string;
 };
+
+export type UpdateCategory = (
+  id: string,
+  name: string,
+) => Promise<Category | undefined>;
